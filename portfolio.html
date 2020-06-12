@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-1.11.0.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script src="js/slick.min.js"></script>
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap&subset=cyrillic"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="img/favicon/site.webmanifest" />
+    <link rel="mask-icon" href="img/favicon/safari-pinned-tab.svg" />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <meta name="theme-color" content="#ffffff" />
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+    <script>
+      $(document).ready(function () {
+        $(".slider").slick(
+          {
+            infinite: true,
+            arrows: true,
+            dots: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            responsive: [
+              {
+                breakpoint: 550,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                },
+              },
+            ],
+          },
+
+          {}
+        );
+      });
+    </script>
+    <div class="page">
+      <div class="wrapper">
+        <header class="header header--margin">
+          <div class="header__logo">
+            <a class="header__logo--link" href="index.html">
+              <span class="header__logo--color">My</span>Web</a
+            >
+          </div>
+          <button class="header__button--menu" id="button--menu">☰</button>
+          <nav class="header__navigation">
+            <ul class="header__navigation--inline">
+              <li class="header__navigation--col">
+                <a
+                  class="header__navigation--link"
+                  id="indexLink"
+                  href="index.html"
+                  >Главная</a
+                >
+              </li>
+              <li class="header__navigation--col">
+                <a
+                  class="header__navigation--link"
+                  id="servicesLink"
+                  href="services.html"
+                  >Услуги</a
+                >
+              </li>
+              <li class="header__navigation--col">
+                <a
+                  class="header__navigation--link"
+                  id="portfolioLink"
+                  href="portfolio.html"
+                  >Портфолио</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <div class="header__language">
+            <span class="header__language--ru header__language--activ">ru</span>
+            <img class="header__language--img" src="img/flag.png" alt="flag" />
+          </div>
+        </header>
+      </div>
+      <!-- wrapper -->
+
+      <div class="wrapper--noCenter">
+        <div class="portfolio portfolio--margin">
+          <h1>Мои работы</h1>
+          <div class="" id="slider">
+            <div class="slick__vendor">
+              <div class="slider">
+                <div class="slider__myJob">
+                  <a class="slider--link" href="#" target="_blank">
+                    <div class="slider__imgWrap">
+                      <img
+                        class="slider__img"
+                        src="img/myJob_1.jpg"
+                        alt="myJob"
+                      />
+                    </div>
+                    <p class="slider--textLink">Будущий сайт</p></a
+                  >
+                </div>
+
+                <div class="slider__myJob">
+                  <a class="slider--link" href="#" target="_blank">
+                    <div class="slider__imgWrap">
+                      <img
+                        class="slider__img"
+                        src="img/myJob_2.jpg"
+                        alt="myJob"
+                      />
+                    </div>
+                    <p class="slider--textLink">Будущий сайт</p></a
+                  >
+                </div>
+
+                <div class="slider__myJob">
+                  <a class="slider--link" href="#" target="_blank">
+                    <div class="slider__imgWrap">
+                      <img
+                        class="slider__img"
+                        src="img/myJob_1.jpg"
+                        alt="myJob"
+                      />
+                    </div>
+                    <p class="slider--textLink">Будущий сайт</p></a
+                  >
+                </div>
+
+                <div class="slider__myJob">
+                  <a class="slider--link" href="#" target="_blank">
+                    <div class="slider__imgWrap">
+                      <img
+                        class="slider__img"
+                        src="img/myJob_2.jpg"
+                        alt="myJob"
+                      />
+                    </div>
+                    <p class="slider--textLink">Будущий сайт</p></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- slick-slider -->
+        </div>
+      </div>
+      <div class="modal__button modal--ouputMarginTop modal--displayNone">
+        <button class="modal--output" id="buttonMessage">
+          Оставить заявку
+        </button>
+      </div>
+
+      <div class="modal--black" id="modal">
+        <div class="modal modal--position">
+          <button class="modal--disabled" id="disabled">✖</button>
+          <div class="modal__output">
+            <h2 class="modal__contact">Оставить заявку</h2>
+            <p class="modal__info">
+              Заполните форму ниже и я свяжусь с вами в ближайшее время!
+            </p>
+            <input
+              class="modal__input"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Ваше имя"
+            />
+            <input
+              class="modal__input"
+              type="text"
+              name="mail"
+              id="mail"
+              placeholder="Ваш e-mail"
+            />
+            <input
+              class="modal__input"
+              type="text"
+              name="telephone"
+              id="telephone"
+              placeholder="Ваш телефон"
+            />
+          </div>
+          <div class="modal--flex">
+            <div class="modal__button">
+              <button class="modal--output" id="output">Оставить заявку</button>
+            </div>
+            <div class="modal__info_2">
+              <a class="contacts--link" href="tel:+79526156661"
+                >+7(952)615-66-61</a
+              >
+              <a class="contacts--link" href="mailto:ang.iv@mail.ru"
+                >ang.iv@mail.ru</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <footer class="footer footer--inline">
+          <p class="footer__mySocial">Мои соц. сети</p>
+          <div class="footer__img">
+            <a
+              class="footer--link footer--linkVk"
+              href="https://vk.com/id564605744"
+              ><img class="footer__img--size" src="img/vk.png" alt=""
+            /></a>
+            <a
+              class="footer--link footer--linkTel"
+              href="https://tlgg.ru/Ivan_web_developer"
+              ><img class="footer__img--size" src="img/telegram.png" alt=""
+            /></a>
+          </div>
+        </footer>
+      </div>
+    </div>
+    
+  </body>
+</html>

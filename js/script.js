@@ -9,9 +9,56 @@ window.addEventListener("load", function () {
   if (window.document.title == "MyWeb") {
     setTimeout(modalActivation, 3000);
   }
+  //validation
+  const form = document.querySelector("#modal__form");
+  console.log(form.elements);
 
-  const modal = document.querySelector("#modal");
-  btnOutput = modal.querySelector("#output");
+  const buttonSubmit = form.elements.output;
+  buttonSubmit.onclick = (event) => {
+    event.preventDefault();
+  };
+
+  buttonSubmit.addEventListener("click", validation);
+
+  function validation() {
+    let valid = false;
+
+    const name = form.elements.name;
+    const mail = form.elements.mail;
+    const telephone = form.elements.telephone;
+    const input = document.querySelector("input");
+
+    const regularMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regularTelephone = /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/;
+    const regularName = /(^[A-Z]{1}[a-z]{1,14} [A-Z]{1}[a-z]{1,14}$)|(^[А-Я]{1}[а-я]{1,14} [А-Я]{1}[а-я]{1,14}$)|(^[A-ZА-Я]{1}[a-zа-я]{1,14}$)/;
+
+    console.log(name);
+
+    if (regularName.test(name.value) == false) {
+      name.value = null;
+      name.placeholder = "Введите корректное имя";
+      name.classList.add("invalid");
+      valid = "false";
+    } else if (regularMail.test(mail.value) == false) {
+      mail.value = null;
+      mail.placeholder = "Введите корректный e-mail";
+      mail.classList.add("invalid");
+      valid = "false";
+    } else if (regularTelephone.test(telephone.value) == false) {
+      telephone.value = null;
+      telephone.placeholder = "Введите корректный телефон";
+      telephone.classList.add("invalid");
+      valid = "false";
+    } else {
+      valid = true;
+    }
+
+    if (valid == true) {
+      alert("Данные валидны");
+    }
+  }
+
+  //-validation
 
   document
     .querySelector("#buttonMessage")
@@ -53,6 +100,7 @@ window.addEventListener("load", function () {
     let modal = document.querySelector("#modal");
     modal.classList.add("modal--activ");
   }
+  //navigationMenu
 
   const title = window.document.title;
   if (title == "Portfolio") {
@@ -66,4 +114,5 @@ window.addEventListener("load", function () {
     portfolioLink.classList.add("header__navigation--activ");
   }
   console.log();
+  //-navigationMenu
 });

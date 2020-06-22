@@ -10,51 +10,49 @@ window.addEventListener("load", function () {
     setTimeout(modalActivation, 3000);
   }
   //validation
-  const form = document.querySelector("#modal__form");
-  console.log(form.elements);
+  let form = document.querySelector("#modal__form");
+  if (window.document.title != "Portfolio") {
+    let buttonSubmit = form.elements.output;
 
-  const buttonSubmit = form.elements.output;
-  buttonSubmit.onclick = (event) => {
-    event.preventDefault();
-  };
+    // buttonSubmit.onclick = (event) => {
+    //   event.preventDefault();
+    // };
 
-  buttonSubmit.addEventListener("click", validation);
+    buttonSubmit.addEventListener("click", validation);
 
-  function validation() {
-    let valid = false;
+    function validation() {
+      let valid = false;
 
-    const name = form.elements.name;
-    const mail = form.elements.mail;
-    const telephone = form.elements.telephone;
-    const input = document.querySelector("input");
+      let name = form.elements.name;
+      let mail = form.elements.mail;
+      let telephone = form.elements.telephone;
 
-    const regularMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const regularTelephone = /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/;
-    const regularName = /(^[A-Z]{1}[a-z]{1,14} [A-Z]{1}[a-z]{1,14}$)|(^[А-Я]{1}[а-я]{1,14} [А-Я]{1}[а-я]{1,14}$)|(^[A-ZА-Я]{1}[a-zа-я]{1,14}$)/;
+      let regularMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      let regularTelephone = /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/;
+      let regularName = /(^[A-Z]{1}[a-z]{1,14} [A-Z]{1}[a-z]{1,14}$)|(^[А-Я]{1}[а-я]{1,14} [А-Я]{1}[а-я]{1,14}$)|(^[A-ZА-Я]{1}[a-zа-я]{1,14}$)/;
 
-    console.log(name);
+      if (regularName.test(name.value) == false) {
+        name.value = null;
+        name.placeholder = "Введите корректное имя";
+        name.classList.add("invalid");
+        valid = "false";
+      } else if (regularMail.test(mail.value) == false) {
+        mail.value = null;
+        mail.placeholder = "Введите корректный e-mail";
+        mail.classList.add("invalid");
+        valid = "false";
+      } else if (regularTelephone.test(telephone.value) == false) {
+        telephone.value = null;
+        telephone.placeholder = "Введите корректный телефон";
+        telephone.classList.add("invalid");
+        valid = "false";
+      } else {
+        valid = true;
+      }
 
-    if (regularName.test(name.value) == false) {
-      name.value = null;
-      name.placeholder = "Введите корректное имя";
-      name.classList.add("invalid");
-      valid = "false";
-    } else if (regularMail.test(mail.value) == false) {
-      mail.value = null;
-      mail.placeholder = "Введите корректный e-mail";
-      mail.classList.add("invalid");
-      valid = "false";
-    } else if (regularTelephone.test(telephone.value) == false) {
-      telephone.value = null;
-      telephone.placeholder = "Введите корректный телефон";
-      telephone.classList.add("invalid");
-      valid = "false";
-    } else {
-      valid = true;
-    }
-
-    if (valid == true) {
-      alert("Данные валидны");
+      if (valid == true) {
+        form.onsubmit = "return true";
+      }
     }
   }
 
@@ -67,8 +65,8 @@ window.addEventListener("load", function () {
     });
 
   function buttonMenu() {
-    const headerNavigation = document.querySelector(".header__navigation");
-    const headerNavigatioInline = document.querySelector(
+    let headerNavigation = document.querySelector(".header__navigation");
+    let headerNavigatioInline = document.querySelector(
       ".header__navigation--inline"
     );
     let headerClassList = headerNavigation.classList;
@@ -102,17 +100,19 @@ window.addEventListener("load", function () {
   }
   //navigationMenu
 
-  const title = window.document.title;
+  let title = window.document.title;
   if (title == "Portfolio") {
-    let servicesLink = document.querySelector("#portfolioLink");
-    servicesLink.classList.add("header__navigation--activ");
+    document
+      .querySelector("#portfolioLink")
+      .classList.add("header__navigation--activ");
   } else if (title == "MyWeb") {
-    let indexLink = document.querySelector("#indexLink");
-    indexLink.classList.add("header__navigation--activ");
+    document
+      .querySelector("#indexLink")
+      .classList.add("header__navigation--activ");
   } else if (title == "Services") {
-    let portfolioLink = document.querySelector("#servicesLink");
-    portfolioLink.classList.add("header__navigation--activ");
+    document
+      .querySelector("#servicesLink")
+      .classList.add("header__navigation--activ");
   }
-  console.log();
   //-navigationMenu
 });

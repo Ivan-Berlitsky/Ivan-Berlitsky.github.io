@@ -25,8 +25,6 @@ window.addEventListener("load", function () {
     disabledModal.addEventListener("click", disabled);
 
     function validation() {
-      let valid = false;
-
       const name = form.elements.name;
       const mail = form.elements.mail;
       const telephone = form.elements.telephone;
